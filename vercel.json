@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build:vercel --workspace=client",
+  "buildCommand": "cd client && npm run build:vercel",
   "outputDirectory": "client/dist",
   "installCommand": "npm install",
   "framework": null,

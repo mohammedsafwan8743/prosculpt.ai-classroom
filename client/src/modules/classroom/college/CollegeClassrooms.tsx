@@ -422,8 +422,10 @@ export default function CollegeClassrooms() {
               {/* Basic Details */}
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1">
-                  <label className="text-xs font-medium text-foreground">Classroom Name *</label>
+                  <label htmlFor="edit-name" className="text-xs font-medium text-foreground">Classroom Name *</label>
                   <input
+                    id="edit-name"
+                    name="name"
                     type="text"
                     required
                     value={editName}
@@ -432,8 +434,10 @@ export default function CollegeClassrooms() {
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs font-medium text-foreground">Course *</label>
+                  <label htmlFor="edit-course" className="text-xs font-medium text-foreground">Course *</label>
                   <input
+                    id="edit-course"
+                    name="course"
                     type="text"
                     required
                     value={editCourse}
@@ -442,8 +446,10 @@ export default function CollegeClassrooms() {
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs font-medium text-foreground">Department *</label>
+                  <label htmlFor="edit-department" className="text-xs font-medium text-foreground">Department *</label>
                   <select
+                    id="edit-department"
+                    name="department"
                     required
                     value={editDepartment}
                     onChange={(e) => setEditDepartment(e.target.value)}
@@ -458,8 +464,10 @@ export default function CollegeClassrooms() {
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="text-xs font-medium text-foreground">Batch *</label>
+                    <label htmlFor="edit-batch" className="text-xs font-medium text-foreground">Batch *</label>
                     <select
+                      id="edit-batch"
+                      name="batch"
                       required
                       value={editBatch}
                       onChange={(e) => setEditBatch(e.target.value)}
@@ -473,8 +481,10 @@ export default function CollegeClassrooms() {
                     </select>
                   </div>
                   <div className="space-y-1">
-                    <label className="text-xs font-medium text-foreground">Semester *</label>
+                    <label htmlFor="edit-semester" className="text-xs font-medium text-foreground">Semester *</label>
                     <select
+                      id="edit-semester"
+                      name="semester"
                       required
                       value={editSemester}
                       onChange={(e) => setEditSemester(e.target.value)}
@@ -491,8 +501,10 @@ export default function CollegeClassrooms() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-medium text-foreground">Description</label>
+                <label htmlFor="edit-description" className="text-xs font-medium text-foreground">Description</label>
                 <textarea
+                  id="edit-description"
+                  name="description"
                   value={editDescription}
                   onChange={(e) => setEditDescription(e.target.value)}
                   rows={2}
@@ -503,8 +515,10 @@ export default function CollegeClassrooms() {
               {/* Dates & limits */}
               <div className="grid gap-4 sm:grid-cols-3">
                 <div className="space-y-1">
-                  <label className="text-xs font-medium text-foreground">Start Date *</label>
+                  <label htmlFor="edit-start-date" className="text-xs font-medium text-foreground">Start Date *</label>
                   <input
+                    id="edit-start-date"
+                    name="start_date"
                     type="date"
                     required
                     value={editStartDate}
@@ -513,8 +527,10 @@ export default function CollegeClassrooms() {
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs font-medium text-foreground">End Date *</label>
+                  <label htmlFor="edit-end-date" className="text-xs font-medium text-foreground">End Date *</label>
                   <input
+                    id="edit-end-date"
+                    name="end_date"
                     type="date"
                     required
                     value={editEndDate}
@@ -523,8 +539,10 @@ export default function CollegeClassrooms() {
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs font-medium text-foreground">Max Students *</label>
+                  <label htmlFor="edit-max-students" className="text-xs font-medium text-foreground">Max Students *</label>
                   <input
+                    id="edit-max-students"
+                    name="max_students"
                     type="number"
                     required
                     min={5}
@@ -538,11 +556,13 @@ export default function CollegeClassrooms() {
 
               {/* Weekly Schedule */}
               <div className="space-y-3">
-                <label className="text-xs font-medium text-foreground block">Weekly Session Times</label>
+                <label htmlFor="temp-day" className="text-xs font-medium text-foreground block">Weekly Session Times</label>
                 <div className="flex flex-col sm:flex-row gap-3 items-end bg-muted/30 p-3 rounded-lg border border-border">
                   <div className="space-y-1 flex-1">
                     <span className="text-[10px] text-muted-foreground">Select Day</span>
                     <select
+                      id="temp-day"
+                      name="temp_day"
                       value={tempDay}
                       onChange={(e) => setTempDay(e.target.value)}
                       className="w-full h-9 rounded-lg border border-input bg-background px-3 text-sm outline-none"
@@ -555,6 +575,8 @@ export default function CollegeClassrooms() {
                   <div className="space-y-1">
                     <span className="text-[10px] text-muted-foreground">Start Time</span>
                     <input
+                      id="temp-start-time"
+                      name="temp_start_time"
                       type="time"
                       value={tempStartTime}
                       onChange={(e) => setTempStartTime(e.target.value)}
@@ -564,6 +586,8 @@ export default function CollegeClassrooms() {
                   <div className="space-y-1">
                     <span className="text-[10px] text-muted-foreground">End Time</span>
                     <input
+                      id="temp-end-time"
+                      name="temp_end_time"
                       type="time"
                       value={tempEndTime}
                       onChange={(e) => setTempEndTime(e.target.value)}
@@ -607,7 +631,7 @@ export default function CollegeClassrooms() {
               <div className="space-y-3 pt-2 border-t">
                 <div className="flex items-center justify-between">
                   <div>
-                    <label className="text-xs font-medium text-foreground block">
+                    <label htmlFor="edit-recording" className="text-xs font-medium text-foreground block">
                       Automatic Recording
                     </label>
                     <span className="text-[10px] text-muted-foreground">
@@ -615,6 +639,8 @@ export default function CollegeClassrooms() {
                     </span>
                   </div>
                   <input
+                    id="edit-recording"
+                    name="recording_enabled"
                     type="checkbox"
                     checked={editRecordingEnabled}
                     onChange={(e) => setEditRecordingEnabled(e.target.checked)}
@@ -624,7 +650,7 @@ export default function CollegeClassrooms() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <label className="text-xs font-medium text-foreground block">
+                    <label htmlFor="edit-student-chat" className="text-xs font-medium text-foreground block">
                       Allow Student Chat
                     </label>
                     <span className="text-[10px] text-muted-foreground">
@@ -632,6 +658,8 @@ export default function CollegeClassrooms() {
                     </span>
                   </div>
                   <input
+                    id="edit-student-chat"
+                    name="allow_student_chat"
                     type="checkbox"
                     checked={editAllowStudentChat}
                     onChange={(e) => setEditAllowStudentChat(e.target.checked)}
@@ -641,7 +669,7 @@ export default function CollegeClassrooms() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <label className="text-xs font-medium text-foreground block">
+                    <label htmlFor="edit-screen-share" className="text-xs font-medium text-foreground block">
                       Allow Student Screen Share
                     </label>
                     <span className="text-[10px] text-muted-foreground">
@@ -649,6 +677,8 @@ export default function CollegeClassrooms() {
                     </span>
                   </div>
                   <input
+                    id="edit-screen-share"
+                    name="allow_screen_share"
                     type="checkbox"
                     checked={editAllowScreenShare}
                     onChange={(e) => setEditAllowScreenShare(e.target.checked)}
@@ -658,7 +688,7 @@ export default function CollegeClassrooms() {
 
                 <div className="flex items-center justify-between border-t pt-3">
                   <div>
-                    <label className="text-xs font-medium text-foreground block">
+                    <label htmlFor="edit-visibility" className="text-xs font-medium text-foreground block">
                       Classroom Visibility
                     </label>
                     <span className="text-[10px] text-muted-foreground">
@@ -666,6 +696,8 @@ export default function CollegeClassrooms() {
                     </span>
                   </div>
                   <select
+                    id="edit-visibility"
+                    name="visibility"
                     value={editVisibility}
                     onChange={(e) => setEditVisibility(e.target.value as "public" | "private")}
                     className="h-9 rounded-lg border border-input bg-background px-3 text-sm outline-none"

@@ -197,8 +197,10 @@ export default function CreateClassroom() {
           </h3>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-1">
-              <label className="text-sm font-medium text-foreground">Classroom Name *</label>
+              <label htmlFor="create-name" className="text-sm font-medium text-foreground">Classroom Name *</label>
               <input
+                id="create-name"
+                name="name"
                 type="text"
                 required
                 value={name}
@@ -208,8 +210,10 @@ export default function CreateClassroom() {
               />
             </div>
             <div className="space-y-1">
-              <label className="text-sm font-medium text-foreground">Course *</label>
+              <label htmlFor="create-course" className="text-sm font-medium text-foreground">Course *</label>
               <input
+                id="create-course"
+                name="course"
                 type="text"
                 required
                 value={course}
@@ -219,8 +223,10 @@ export default function CreateClassroom() {
               />
             </div>
              <div className="space-y-1">
-              <label className="text-sm font-medium text-foreground">Department *</label>
+              <label htmlFor="create-department" className="text-sm font-medium text-foreground">Department *</label>
               <select
+                id="create-department"
+                name="department"
                 required
                 value={department}
                 onChange={(e) => setDepartment(e.target.value)}
@@ -244,8 +250,10 @@ export default function CreateClassroom() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1">
-                <label className="text-sm font-medium text-foreground">Batch *</label>
+                <label htmlFor="create-batch" className="text-sm font-medium text-foreground">Batch *</label>
                 <select
+                  id="create-batch"
+                  name="batch"
                   required
                   value={batch}
                   onChange={(e) => setBatch(e.target.value)}
@@ -266,8 +274,10 @@ export default function CreateClassroom() {
                 )}
               </div>
               <div className="space-y-1">
-                <label className="text-sm font-medium text-foreground">Semester *</label>
+                <label htmlFor="create-semester" className="text-sm font-medium text-foreground">Semester *</label>
                 <select
+                  id="create-semester"
+                  name="semester"
                   required
                   value={semester}
                   onChange={(e) => setSemester(e.target.value)}
@@ -291,8 +301,10 @@ export default function CreateClassroom() {
           </div>
 
           <div className="space-y-1">
-            <label className="text-sm font-medium text-foreground">Description</label>
+            <label htmlFor="create-description" className="text-sm font-medium text-foreground">Description</label>
             <textarea
+              id="create-description"
+              name="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Provide a brief overview of the syllabus or classroom goals..."
@@ -309,8 +321,10 @@ export default function CreateClassroom() {
           </h3>
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="space-y-1">
-              <label className="text-sm font-medium text-foreground">Start Date *</label>
+              <label htmlFor="create-start-date" className="text-sm font-medium text-foreground">Start Date *</label>
               <input
+                id="create-start-date"
+                name="start_date"
                 type="date"
                 required
                 value={startDate}
@@ -319,8 +333,10 @@ export default function CreateClassroom() {
               />
             </div>
             <div className="space-y-1">
-              <label className="text-sm font-medium text-foreground">End Date *</label>
+              <label htmlFor="create-end-date" className="text-sm font-medium text-foreground">End Date *</label>
               <input
+                id="create-end-date"
+                name="end_date"
                 type="date"
                 required
                 value={endDate}
@@ -329,8 +345,10 @@ export default function CreateClassroom() {
               />
             </div>
             <div className="space-y-1">
-              <label className="text-sm font-medium text-foreground">Max Students *</label>
+              <label htmlFor="create-max-students" className="text-sm font-medium text-foreground">Max Students *</label>
               <input
+                id="create-max-students"
+                name="max_students"
                 type="number"
                 required
                 min={5}
@@ -344,11 +362,13 @@ export default function CreateClassroom() {
 
           {/* Weekly Schedule Planner */}
           <div className="space-y-3 pt-2">
-            <label className="text-sm font-medium text-foreground block">Weekly Session Times</label>
+            <label htmlFor="create-temp-day" className="text-sm font-medium text-foreground block">Weekly Session Times</label>
             <div className="flex flex-col sm:flex-row gap-3 items-end bg-muted/30 p-3 rounded-lg border border-border">
               <div className="space-y-1 flex-1">
                 <span className="text-xs text-muted-foreground">Select Day</span>
                 <select
+                  id="create-temp-day"
+                  name="temp_day"
                   value={tempDay}
                   onChange={(e) => setTempDay(e.target.value)}
                   className="w-full h-9 rounded-lg border border-input bg-background px-3 text-sm outline-none"
@@ -363,6 +383,8 @@ export default function CreateClassroom() {
               <div className="space-y-1">
                 <span className="text-xs text-muted-foreground">Start Time</span>
                 <input
+                  id="create-temp-start-time"
+                  name="temp_start_time"
                   type="time"
                   value={tempStartTime}
                   onChange={(e) => setTempStartTime(e.target.value)}
@@ -372,6 +394,8 @@ export default function CreateClassroom() {
               <div className="space-y-1">
                 <span className="text-xs text-muted-foreground">End Time</span>
                 <input
+                  id="create-temp-end-time"
+                  name="create_temp_end_time"
                   type="time"
                   value={tempEndTime}
                   onChange={(e) => setTempEndTime(e.target.value)}
@@ -421,7 +445,7 @@ export default function CreateClassroom() {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div>
-                <label className="text-sm font-medium text-foreground block">
+                <label htmlFor="create-recording" className="text-sm font-medium text-foreground block">
                   Automatic Recording
                 </label>
                 <span className="text-xs text-muted-foreground">
@@ -429,6 +453,8 @@ export default function CreateClassroom() {
                 </span>
               </div>
               <input
+                id="create-recording"
+                name="recording_enabled"
                 type="checkbox"
                 checked={recordingEnabled}
                 onChange={(e) => setRecordingEnabled(e.target.checked)}
@@ -438,7 +464,7 @@ export default function CreateClassroom() {
 
             <div className="flex items-center justify-between">
               <div>
-                <label className="text-sm font-medium text-foreground block">
+                <label htmlFor="create-student-chat" className="text-sm font-medium text-foreground block">
                   Allow Student Chat
                 </label>
                 <span className="text-xs text-muted-foreground">
@@ -446,6 +472,8 @@ export default function CreateClassroom() {
                 </span>
               </div>
               <input
+                id="create-student-chat"
+                name="allow_student_chat"
                 type="checkbox"
                 checked={allowStudentChat}
                 onChange={(e) => setAllowStudentChat(e.target.checked)}
@@ -455,7 +483,7 @@ export default function CreateClassroom() {
 
             <div className="flex items-center justify-between">
               <div>
-                <label className="text-sm font-medium text-foreground block">
+                <label htmlFor="create-screen-share" className="text-sm font-medium text-foreground block">
                   Allow Student Screen Share
                 </label>
                 <span className="text-xs text-muted-foreground">
@@ -463,6 +491,8 @@ export default function CreateClassroom() {
                 </span>
               </div>
               <input
+                id="create-screen-share"
+                name="allow_screen_share"
                 type="checkbox"
                 checked={allowScreenShare}
                 onChange={(e) => setAllowScreenShare(e.target.checked)}
@@ -472,7 +502,7 @@ export default function CreateClassroom() {
 
             <div className="flex items-center justify-between border-t pt-3">
               <div>
-                <label className="text-sm font-medium text-foreground block">
+                <label htmlFor="create-visibility" className="text-sm font-medium text-foreground block">
                   Classroom Visibility
                 </label>
                 <span className="text-xs text-muted-foreground">
@@ -480,6 +510,8 @@ export default function CreateClassroom() {
                 </span>
               </div>
               <select
+                id="create-visibility"
+                name="visibility"
                 value={visibility}
                 onChange={(e) => setVisibility(e.target.value as "public" | "private")}
                 className="h-9 rounded-lg border border-input bg-background px-3 text-sm outline-none"

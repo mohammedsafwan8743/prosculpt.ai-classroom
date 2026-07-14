@@ -1,0 +1,393 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================
+   PROSCULPT.AI — DESIGN SYSTEM TOKENS
+   ============================================= */
+
+@layer base {
+  :root {
+    /* PRIMARY — ProSculpt Blue */
+    --primary: #1565C0;
+    --primary-hover: #0D47A1;
+    --primary-light: #1976D2;
+
+    /* ACCENT */
+    --accent: #1E40AF;
+    --accent-hover: #1E3A8A;
+
+    /* HERO GRADIENT */
+    --hero-gradient: linear-gradient(135deg, #0D2B6B 0%, #1565C0 40%, #1E88E5 100%);
+
+    /* BACKGROUNDS */
+    --bg-main: #F5F8FF;
+    --bg-card: #FFFFFF;
+    --bg-nav: #FFFFFF;
+    --bg-section-dark: #0D2B6B;
+    --bg-section-mid: #EFF4FF;
+
+    /* TEXT */
+    --text-primary: #0D1B3E;
+    --text-secondary: #374151;
+    --text-muted: #6B7280;
+    --text-on-primary: #FFFFFF;
+
+    /* AI CYAN */
+    --ai-cyan: #0EA5E9;
+    --ai-glow: rgba(14, 165, 233, 0.25);
+
+    /* BORDERS + SHADOWS */
+    --border: #DBEAFE;
+    --border-card: #E5EAF2;
+    --shadow-card: 0 2px 12px rgba(21, 101, 192, 0.08);
+    --shadow-elevated: 0 8px 32px rgba(21, 101, 192, 0.15);
+
+    /* STATES */
+    --success: #10B981;
+    --warning: #F59E0B;
+    --error: #EF4444;
+    --info: #3B82F6;
+
+    /* shadcn/ui compatibility */
+    --background: #F5F8FF;
+    --foreground: #0D1B3E;
+    --card: #FFFFFF;
+    --card-foreground: #0D1B3E;
+    --popover: #FFFFFF;
+    --popover-foreground: #0D1B3E;
+    --secondary: #F1F5F9;
+    --secondary-foreground: #374151;
+    --muted: #F1F5F9;
+    --muted-foreground: #6B7280;
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+    --input: #E2E8F0;
+    --ring: #1565C0;
+    --radius: 0.5rem;
+
+    /* SIDEBAR */
+    --sidebar-bg: #FFFFFF;
+    --sidebar-border: #E5EAF2;
+    --sidebar-item-hover: #EFF4FF;
+    --sidebar-item-active: #DBEAFE;
+    --sidebar-text: #374151;
+    --sidebar-text-active: #1565C0;
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 72px;
+  }
+
+  .dark {
+    --bg-main: #0F172A;
+    --bg-card: #1E293B;
+    --bg-nav: #1E293B;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --border: rgba(255, 255, 255, 0.1);
+    --border-card: rgba(255, 255, 255, 0.08);
+
+    --background: #0F172A;
+    --foreground: #F8FAFC;
+    --card: #1E293B;
+    --card-foreground: #F8FAFC;
+    --popover: #1E293B;
+    --popover-foreground: #F8FAFC;
+    --secondary: #1E293B;
+    --secondary-foreground: #CBD5E1;
+    --muted: #1E293B;
+    --muted-foreground: #94A3B8;
+    --input: #334155;
+
+    --sidebar-bg: #1E293B;
+    --sidebar-border: rgba(255, 255, 255, 0.08);
+    --sidebar-item-hover: rgba(255, 255, 255, 0.06);
+    --sidebar-item-active: rgba(21, 101, 192, 0.2);
+    --sidebar-text: #CBD5E1;
+    --sidebar-text-active: #60A5FA;
+  }
+}
+
+/* =============================================
+   BASE STYLES
+   ============================================= */
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-sans antialiased overflow-x-hidden;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+}
+
+/* =============================================
+   PROSCULPT COMPONENT CLASSES
+   ============================================= */
+
+@layer components {
+  /* ── Cards ── */
+  .ps-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .ps-card:hover {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .ps-card-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .ps-card-interactive {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  .ps-card-interactive:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-2px);
+  }
+
+  /* ── Glassmorphism ── */
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-blue {
+    background: rgba(21, 101, 192, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(21, 101, 192, 0.2);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+  }
+
+  .dark .glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 font-display font-semibold cursor-pointer;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    padding: 10px 24px;
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    border: none;
+    outline: none;
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(21, 101, 192, 0.3);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 font-display font-semibold cursor-pointer;
+    background: transparent;
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+    border-radius: 8px;
+    padding: 10px 24px;
+    transition: all 0.2s ease;
+  }
+
+  .btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-ai {
+    @apply inline-flex items-center gap-2 font-display font-semibold cursor-pointer;
+    background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 10px 24px;
+    box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .btn-ai:hover {
+    box-shadow: 0 6px 24px rgba(14, 165, 233, 0.5);
+    transform: translateY(-1px);
+  }
+
+  /* ── Badges ── */
+  .ai-badge {
+    @apply inline-flex items-center gap-1 font-display font-semibold;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(59, 130, 246, 0.1));
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    color: #0EA5E9;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  /* ── Match/Progress Bar ── */
+  .match-bar {
+    height: 6px;
+    border-radius: 999px;
+    background: #E2E8F0;
+    overflow: hidden;
+  }
+
+  .match-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #1565C0, #0EA5E9);
+    transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* ── Skeleton Loading ── */
+  .skeleton {
+    background: linear-gradient(90deg, #EFF4FF 25%, #DBEAFE 50%, #EFF4FF 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+    border-radius: 8px;
+  }
+
+  .dark .skeleton {
+    background: linear-gradient(90deg, #1E293B 25%, #334155 50%, #1E293B 75%);
+    background-size: 200% 100%;
+  }
+
+  /* ── Live Dot ── */
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #EF4444;
+    animation: liveRing 1.5s ease-in-out infinite;
+  }
+}
+
+/* =============================================
+   UTILITY CLASSES
+   ============================================= */
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #1565C0, #0EA5E9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient {
+    border: 1px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+      linear-gradient(135deg, #1565C0, #0EA5E9) border-box;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* =============================================
+   SCROLLBAR STYLING
+   ============================================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #BFDBFE;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #93C5FD;
+}
+
+/* =============================================
+   KEYFRAMES
+   ============================================= */
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes liveRing {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(14, 165, 233, 0); }
+}
+
+/* =============================================
+   DARK MODE — CARD OVERRIDES
+   ============================================= */
+
+.dark .ps-card {
+  background: var(--card);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}

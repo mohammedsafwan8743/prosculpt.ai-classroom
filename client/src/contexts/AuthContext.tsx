@@ -4,6 +4,7 @@ import {
   useEffect,
   useState,
   useCallback,
+  useRef,
   type ReactNode,
 } from "react";
 import type { Session } from "@supabase/supabase-js";
@@ -39,6 +40,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     error: null,
   });
 
+  const lastSessionTokenRef = useRef<string | undefined>(undefined);
+
   /**
    * Fetch the user's role and profile from the `users` table.
    */
@@ -62,6 +65,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
    */
   const handleSession = useCallback(
     async (session: Session | null) => {
+      if (session?.access_token === lastSessionTokenRef.current) {
+        return;
+      }
+      lastSessionTokenRef.current = session?.access_token;
+
       if (!session?.user) {
         setState({
           session: null,

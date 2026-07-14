@@ -7,7 +7,7 @@ import { supabase } from "./supabase";
  * - Automatically attaches the Supabase access token as a Bearer token.
  */
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: import.meta.env.VITE_API_URL || "/api",
   headers: {
     "Content-Type": "application/json",
   },

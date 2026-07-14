@@ -16,7 +16,10 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: env.CORS_ORIGIN,
+    origin:
+      env.NODE_ENV === "production"
+        ? [env.CORS_ORIGIN, /\.vercel\.app$/]
+        : env.CORS_ORIGIN,
     credentials: true,
   })
 );

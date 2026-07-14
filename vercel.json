@@ -4,8 +4,9 @@
   "installCommand": "npm install",
   "framework": null,
   "functions": {
-    "api/**/*.ts": {
-      "includeFiles": "server/**"
+    "api/index.ts": {
+      "includeFiles": "server/**",
+      "maxDuration": 30
     }
   },
   "rewrites": [

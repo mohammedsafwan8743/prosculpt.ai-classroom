@@ -13,13 +13,16 @@ import livekitRoutes from "./modules/livekit/livekit.routes.js";
 const app = express();
 
 /* ── Security ── */
-app.use(helmet());
+// Disable Helmet in serverless (Vercel) — it adds headers that interfere
+// with serverless function responses and Vercel handles security headers itself.
+if (!process.env.VERCEL) {
+  app.use(helmet());
+}
 app.use(
   cors({
-    origin:
-      env.NODE_ENV === "production"
-        ? [env.CORS_ORIGIN, /\.vercel\.app$/]
-        : env.CORS_ORIGIN,
+    origin: process.env.VERCEL
+      ? true  // Allow all origins on Vercel (same domain, serverless)
+      : env.CORS_ORIGIN,
     credentials: true,
   })
 );

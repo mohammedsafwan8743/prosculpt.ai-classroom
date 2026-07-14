@@ -1,16 +1,21 @@
 import { z } from "zod";
-import dotenv from "dotenv";
-import path from "path";
-import { fileURLToPath } from "url";
 
 // Only load .env files in local development.
 // On Vercel, environment variables are injected automatically via the dashboard.
 if (!process.env.VERCEL) {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
+  try {
+    const dotenv = await import("dotenv");
+    const path = await import("path");
+    const { fileURLToPath } = await import("url");
 
-  dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
-  dotenv.config({ path: path.resolve(__dirname, "../../../.env.local"), override: true });
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+
+    dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
+    dotenv.config({ path: path.resolve(__dirname, "../../../.env.local"), override: true });
+  } catch {
+    // Silently ignore — env vars should be available via process.env
+  }
 }
 
 /**
